@@ -3,6 +3,8 @@
 <head>
 <link rel="shortcut icon" href="favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+<link rel="apple-touch-icon" href="favicon.ico">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <meta charset="UTF-8" />
 <script type="text/javascript" src="speedtest.js"></script>
 <script type="text/javascript">
@@ -11,8 +13,8 @@ function I(i){return document.getElementById(i);}
 //LIST OF TEST SERVERS. See documentation for details if needed
 var SPEEDTEST_SERVERS= <?= file_get_contents('/servers.json') ?: '[]' ?>;
 
-//INITIALIZE SPEEDTEST
-var s=new Speedtest(); //create speedtest object
+//INITIALIZE SPEED TEST
+var s=new Speedtest(); //create speed test object
 <?php if(getenv("TELEMETRY")=="true"){ ?>
 s.setParameter("telemetry_level","basic");
 <?php } ?>
@@ -112,7 +114,7 @@ function format(d){
 var uiData=null;
 function startStop(){
     if(s.getState()==3){
-		//speedtest is running, abort
+		//speed test is running, abort
 		s.abort();
 		data=null;
 		I("startStopBtn").className="";
@@ -409,13 +411,13 @@ function initUI(){
 				<div class="testName">Download</div>
 				<canvas id="dlMeter" class="meter"></canvas>
 				<div id="dlText" class="meterText"></div>
-				<div class="unit">Mbps</div>
+				<div class="unit">Mbit/s</div>
 			</div>
 			<div class="testArea">
 				<div class="testName">Upload</div>
 				<canvas id="ulMeter" class="meter"></canvas>
 				<div id="ulText" class="meterText"></div>
-				<div class="unit">Mbps</div>
+				<div class="unit">Mbit/s</div>
 			</div>
 		</div>
 		<div id="ipArea">
@@ -432,7 +434,7 @@ function initUI(){
 </div>
 <div id="privacyPolicy" style="display:none">
     <h2>Privacy Policy</h2>
-    <p>This HTML5 Speedtest server is configured with telemetry enabled.</p>
+    <p>This HTML5 speed test server is configured with telemetry enabled.</p>
     <h4>What data we collect</h4>
     <p>
         At the end of the test, the following data is collected and stored:
